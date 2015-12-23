@@ -33,6 +33,9 @@ filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
+"""" Vim Fugtive
+set statusline+=%{fugitive#statusline()}
+
 
 """" Basic Settings
 set nowrap
@@ -64,7 +67,7 @@ nnoremap <leader>fef :normal! gg=G``<CR>
 noremap <F3> :Autoformat<CR><CR>
 
 """" STATUS LINE
-set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+set statusline+=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 set colorcolumn=100
 let mapleader = ","

@@ -28,3 +28,6 @@ git clone git://github.com/tpope/vim-rails.git ~/.vim/bundle/vim-rails
 
 echo "Installing Vim Bundler"
 git clone git://github.com/tpope/vim-rails.git ~/.vim/bundle/vim-bundler
+
+echo "Installing Vim Fugitive"
+git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
