@@ -1,0 +1,3 @@
+ary.map { |elem| 
+hj
+
