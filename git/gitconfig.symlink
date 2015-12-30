@@ -13,7 +13,7 @@
   keepBackup = false
 
 [core]
-  excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore
   editor = /usr/local/bin/vim
 	autocrlf = input
 

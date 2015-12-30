@@ -36,6 +36,9 @@ filetype plugin on    " Enable filetype-specific plugins
 """" Vim Fugtive
 set statusline+=%{fugitive#statusline()}
 
+"""" Vim AG
+let g:ag_working_path_mode="r"
+
 
 """" Basic Settings
 set nowrap
