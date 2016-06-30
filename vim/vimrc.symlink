@@ -21,8 +21,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:syntastic_go_checkers = ['go', 'gofmt']
+let g:syntastic_ruby_checkers = ['jruby', 'mri', 'rubocop' ]
+
 """" Vim Colors Solarized
-syntax enable
+syntax on
 set background=dark
 colorscheme solarized
 let g:solarized_termcolors=256
@@ -41,18 +44,19 @@ let g:ag_working_path_mode="r"
 
 
 """" Basic Settings
+
 set nowrap
 set autoindent
 set cmdheight=1
-set cursorline " highlight current line
+set nocursorline " highlight current line
+set norelativenumber
 set expandtab
 set hidden         " remember more commands and search history
-set history=10000
+set history=1000
 set hlsearch 
 set ignorecase smartcase	" make searches case-sensitive only if they contain upper-case characters
 set incsearch
 set laststatus=2
-set nocompatible   " We're running Vim, not Vi!
 set number
 set shiftwidth=2
 set showmatch
@@ -68,9 +72,7 @@ set backspace=2
 " format the entire file
 nnoremap <leader>fef :normal! gg=G``<CR>
 noremap <F3> :Autoformat<CR><CR>
-
-"""" STATUS LINE
-set statusline+=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+noremap <silent> <Tab> :wincmd w<cr>
 
 set colorcolumn=100
 let mapleader = ","
@@ -80,6 +82,11 @@ nnoremap <leader><leader> <c-^>
 
 " change cursor in insert mode
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)

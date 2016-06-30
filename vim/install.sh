@@ -34,3 +34,6 @@ git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 
 echo "Installing AG"
 git clone git@github.com:rking/ag.vim.git ~/.vim/bundle/ag 
+
+echo "Installing Vim Go"
+git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
