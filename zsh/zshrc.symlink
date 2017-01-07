@@ -1,5 +1,5 @@
 ZSH=$HOME/.oh-my-zsh
-DOTFILES=$HOME/.dotfiles
+DOTFILES=$HOME/Dotfiles
 ZSH_THEME="miloshadzic"
 
 # all of our zsh files

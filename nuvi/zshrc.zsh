@@ -1,1 +1,1 @@
-source ~/nuvi/dotfiles/nuvi.sh
+source ~/code/nuvi/dotfiles/nuvi.sh

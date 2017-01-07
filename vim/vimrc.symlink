@@ -94,7 +94,7 @@ noremap <silent> <Tab> :wincmd w<cr>
 
 set colorcolumn=120
 let mapleader = ","
-nnoremap <leader>ev :vsplit ~/.dotfiles/vim/vimrc.symlink<cr>
+nnoremap <leader>ev :vsplit ~/Dotfiles/vim/vimrc.symlink<cr>
 inoremap jk <esc>
 nnoremap <leader><leader> <c-^>
 

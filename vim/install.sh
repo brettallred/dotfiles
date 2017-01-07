@@ -37,12 +37,3 @@ git clone git@github.com:rking/ag.vim.git ~/.vim/bundle/ag
 
 echo "Installing Vim Go"
 git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
-
-echo "Installing YouCompleteMe (requires building)"
-git clone https://github.com/Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe
-
-# the build step
-pushd ~/.vim/bundle/YouCompleteMe
-git submodule update --init --recursive
-./install.sh
-popd
