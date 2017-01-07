@@ -29,9 +29,16 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="./node_modules/.bin:$PATH"
 eval "$(rbenv init -)"
 
 export JRUBY_OPTS=""
 
 export UNIXNUVIS=/Users/brett.allred/nuvi/Nuvis
 #if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
+# added by travis gem
+[ -f /Users/brett.allred/.travis/travis.sh ] && source /Users/brett.allred/.travis/travis.sh
+
+export NVM_DIR="/Users/brett.allred/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
