@@ -13,3 +13,4 @@ brew install youtube-dl
 brew install ag
 brew install rbenv
 read -p "Press any key to continue"
+brew install pyenv
