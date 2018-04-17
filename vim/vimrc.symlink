@@ -8,7 +8,8 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 
 """" NERDTREE
 
-nnoremap <F2> :NERDTreeToggle<cr>
+map <silent> <F2> :NERDTreeToggle<cr>
+map <silent> <leader>ee :NERDTreeToggle<cr>
 
 """" Syntastic
 

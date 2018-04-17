@@ -22,18 +22,22 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export EDITOR=vim
 
-export GOPATH=$HOME/scp/gowork
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/Code/gowork
+export PATH=$PATH:~/Library/Python/2.7/bin:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
-
+export PATH=/usr/local/Cellar/openresty/1.11.2.5/nginx/sbin:$PATH
 
 export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="./node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
 eval "$(rbenv init -)"
+eval "$(pyenv init -)"
+
 
 export JRUBY_OPTS=""
-
+#export SPARK_HOME=/Users/brett/Code/opensource/spark
 export UNIXNUVIS=/Users/brett.allred/nuvi/Nuvis
 #if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
