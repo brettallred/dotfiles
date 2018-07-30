@@ -5,6 +5,7 @@ execute pathogen#infect()
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+nnoremap <leader>. :CtrlPTag<cr>
 
 """" NERDTREE
 
@@ -55,12 +56,14 @@ filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
+autocmd FileType ruby compiler ruby
 """" Vim Fugtive
 set statusline+=%{fugitive#statusline()}
 
 """" Vim AG
 let g:ag_working_path_mode="r"
 
+"""" Vim Ruby
 
 """" Basic Settings
 
@@ -95,7 +98,7 @@ noremap <silent> <Tab> :wincmd w<cr>
 
 set colorcolumn=120
 let mapleader = ","
-nnoremap <leader>ev :vsplit ~/Dotfiles/vim/vimrc.symlink<cr>
+nnoremap <leader>ev :vsplit ~/.dotfiles/vim/vimrc.symlink<cr>
 inoremap jk <esc>
 nnoremap <leader><leader> <c-^>
 

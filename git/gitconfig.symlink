@@ -13,7 +13,7 @@
   keepBackup = false
 
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/brett.allred/.global_ignore
   editor = /usr/local/bin/vim
 	autocrlf = input
 
@@ -26,3 +26,5 @@
   status = auto
   branch = auto
   diff = auto
+[init]
+	templatedir = ~/.git_template
