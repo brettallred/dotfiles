@@ -1,5 +1,5 @@
 echo "Installing Tree"
-brew tree
+brew install tree
 read -p "Press any key to continue"
 brew install cmake
 read -p "Press any key to continue"
