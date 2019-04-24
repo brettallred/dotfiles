@@ -45,3 +45,5 @@ export UNIXNUVIS=/Users/brett.allred/nuvi/Nuvis
 
 export NVM_DIR="/Users/brett.allred/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+ulimit -n 65536 65536

@@ -10,6 +10,7 @@ nnoremap <leader>. :CtrlPTag<cr>
 """" NERDTREE
 
 map <silent> <F2> :NERDTreeToggle<cr>
+map <silent> HH :NERDTreeToggle<cr>
 map <silent> <leader>ee :NERDTreeToggle<cr>
 
 """" Syntastic
