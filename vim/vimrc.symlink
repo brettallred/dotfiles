@@ -67,7 +67,6 @@ let g:ag_working_path_mode="r"
 """" Vim Ruby
 
 """" Basic Settings
-
 set nowrap
 set autoindent
 set cmdheight=1
@@ -107,7 +106,6 @@ nnoremap <leader><leader> <c-^>
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
 
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
