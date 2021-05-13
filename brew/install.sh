@@ -17,6 +17,6 @@ brew install pyenv
 read -p "Press any key to continue"
 brew install node
 brew cask install homebrew/cask-versions/java8
-brew install elasticsearch
 brew install redis
 brew install heroku/brew/heroku
+brew install yarn

@@ -1,5 +1,5 @@
 [user]
-  name = Brett Allred
+	name = Brett Allred
   email = brettallred@gmail.com
 
 [merge]
@@ -13,7 +13,7 @@
   keepBackup = false
 
 [core]
-	excludesfile = /Users/brettallred/.gitignore
+	excludesfile = /Users/brett.allred/.gitignore
   editor = /usr/local/bin/vim
 	autocrlf = input
 

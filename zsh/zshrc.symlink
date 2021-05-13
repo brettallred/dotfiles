@@ -30,7 +30,7 @@ export PATH=/usr/local/Cellar/openresty/1.11.2.5/nginx/sbin:$PATH
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="./node_modules/.bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export PATH="/Users/brettallred/Code/flutter/bin:$PATH"
+export PATH="/Users/brett.allred/Code/flutter/bin:$PATH"
 
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
@@ -47,4 +47,4 @@ export UNIXNUVIS=/Users/brett.allred/nuvi/Nuvis
 export NVM_DIR="/Users/brett.allred/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-ulimit -n 65536 65536
+ulimit -n 10000
