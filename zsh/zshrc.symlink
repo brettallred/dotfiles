@@ -27,6 +27,7 @@ export PATH=$PATH:~/Library/Python/2.7/bin:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH=/usr/local/Cellar/openresty/1.11.2.5/nginx/sbin:$PATH
 
+
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="./node_modules/.bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
@@ -35,6 +36,7 @@ export PATH="/Users/brett.allred/Code/flutter/bin:$PATH"
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 export JRUBY_OPTS=""
 #export SPARK_HOME=/Users/brett/Code/opensource/spark
