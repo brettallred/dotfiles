@@ -1,22 +1,36 @@
-echo "Installing Tree"
-brew install tree
-read -p "Press any key to continue"
-brew install cmake
-read -p "Press any key to continue"
-brew install vim
-read -p "Press any key to continue"
+
+brew update
+
+echo "Installing Ruby Environment"
+brew install rbenv ruby-build
 brew install postgres
-read -p "Press any key to continue"
 brew install redis
-read -p "Press any key to continue"
-brew install youtube-dl
-brew install ag
-brew install rbenv
-read -p "Press any key to continue"
-brew install pyenv
-read -p "Press any key to continue"
-brew install node
-brew cask install homebrew/cask-versions/java8
-brew install redis
-brew install heroku/brew/heroku
+brew install vim
+brew install nvim
+brew install ruby
 brew install yarn
+brew install cmake
+brew install heroku/brew/heroku
+brew install ag
+
+echo "Installing Go Environment"
+brew install golang
+
+echo "Installing a Node Environment"
+brew install nodejs
+
+brew install tree
+brew install pyenv
+
+echo "Installing Common Applications"
+brew install youtube-dl
+brew install --cask  \
+notion \
+1password \
+evernote \
+google-drive \
+visual-studio-code \
+figma \
+vlc \
+sublime-text
+iterm2

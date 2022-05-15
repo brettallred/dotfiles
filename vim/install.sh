@@ -12,25 +12,25 @@ echo "Installing Nerdtree"
 git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 
 echo "Installing Syntastic"
-git clone https://github.com/scrooloose/syntastic.git ~/.vim/bundle/syntastic
+git clone git@github.com:scrooloose/syntastic.git ~/.vim/bundle/syntastic
 
 echo "Installing Vim Colors Solarized"
-git clone git://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized
+git clone git@github.com:altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized
 
 echo "Installing Vim Commentary"
-git clone git://github.com/tpope/vim-commentary.git ~/.vim/bundle/vim-commentary
+git clone git@github.com:tpope/vim-commentary.git ~/.vim/bundle/vim-commentary
 
 echo "Installing Vim Ruby"
-git clone git://github.com/vim-ruby/vim-ruby.git ~/.vim/bundle/vim-ruby
+git clone git@github.com:vim-ruby/vim-ruby.git ~/.vim/bundle/vim-ruby
 
 echo "Installing Vim Rails"
-git clone git://github.com/tpope/vim-rails.git ~/.vim/bundle/vim-rails
+git clone git@github.com:tpope/vim-rails.git ~/.vim/bundle/vim-rails
 
 echo "Installing Vim Bundler"
-git clone git://github.com/tpope/vim-rails.git ~/.vim/bundle/vim-bundler
+git clone git@github.com:tpope/vim-rails.git ~/.vim/bundle/vim-bundler
 
 echo "Installing Vim Fugitive"
-git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
+git clone git@github.com:tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 
 echo "Installing AG"
 git clone git@github.com:rking/ag.vim.git ~/.vim/bundle/ag 

@@ -2,19 +2,15 @@ autocmd!
 execute pathogen#infect()
 
 """" CTRLP
-
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 nnoremap <leader>. :CtrlPTag<cr>
 
 """" NERDTREE
-
 map <silent> <F2> :NERDTreeToggle<cr>
 map <silent> HH :NERDTreeToggle<cr>
-map <silent> <leader>ee :NERDTreeToggle<cr>
 
 """" Syntastic
-
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -24,16 +20,13 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" use goimports for formatting
-"let g:go_fmt_command = "goimports"
-
-" turn highlighting on
+"use goimports for formatting
+let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-
 let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
 
 " Open go doc in vertical window, horizontal, or tab
@@ -43,14 +36,13 @@ au Filetype go nnoremap <leader>t :tab split <CR>:exe "GoDef"<CR>
 
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
-"let g:syntastic_go_checkers = ['gofmt', 'golint']
-" let g:syntastic_ruby_checkers = ['jruby', 'mri', 'rubocop' ]
+let g:syntastic_ruby_checkers = ['jruby', 'mri', 'rubocop' ]
 
-"""" Vim Colors Solarized
+"""" Color Scheme 
 syntax on
 set background=dark
-colorscheme solarized
-let g:solarized_termcolors=256
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 """" Vim Ruby
 set nocompatible      " We're running Vim, not Vi!
