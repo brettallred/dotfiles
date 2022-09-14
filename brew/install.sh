@@ -1,4 +1,3 @@
-
 brew update
 
 echo "Installing Ruby Environment"
@@ -12,15 +11,18 @@ brew install yarn
 brew install cmake
 brew install heroku/brew/heroku
 brew install ag
+brew install rabbitmq
 
-echo "Installing Go Environment"
+
+echo "Installing Other Environments"
 brew install golang
-
-echo "Installing a Node Environment"
 brew install nodejs
-
-brew install tree
 brew install pyenv
+brew install tree
+brew install spaceship # Command Line  Header
+brew install doctl # Digital Ocean Control
+brew install kubectl # K8s Control
+brew install helm # K8s package manager
 
 echo "Installing Common Applications"
 brew install youtube-dl
@@ -32,5 +34,6 @@ google-drive \
 visual-studio-code \
 figma \
 vlc \
-sublime-text
-iterm2
+sublime-text \
+iterm2 \
+p4v
