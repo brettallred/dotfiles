@@ -36,4 +36,10 @@ figma \
 vlc \
 sublime-text \
 iterm2 \
-p4v
+p4v \
+microsoft-office \
+pgadmin4 \
+google-chrome \
+figma \
+handbrake
+
