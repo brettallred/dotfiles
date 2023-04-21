@@ -2,7 +2,7 @@ brew update
 
 echo "Installing Ruby Environment"
 brew install rbenv ruby-build
-brew install postgres
+brew install postgresql
 brew install redis
 brew install vim
 brew install nvim
@@ -41,5 +41,8 @@ microsoft-office \
 pgadmin4 \
 google-chrome \
 figma \
-handbrake
-
+handbrake \
+zoom \
+slack \
+microsoft-teams \
+mimestream
