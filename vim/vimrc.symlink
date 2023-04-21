@@ -42,8 +42,8 @@ let g:syntastic_ruby_checkers = ['jruby', 'mri', 'rubocop' ]
 syntax on
 set background=dark
 let g:gruvbox_italic=1
-colorscheme gruvbox
-
+autocmd vimenter * ++nested colorscheme gruvbox
+"
 """" Vim Ruby
 set nocompatible      " We're running Vim, not Vi!
 filetype on           " Enable filetype detection

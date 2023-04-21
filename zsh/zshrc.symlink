@@ -34,6 +34,12 @@ export PATH="/Users/brett.allred/Code/flutter/bin:$PATH"
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi'
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 export JRUBY_OPTS=""
