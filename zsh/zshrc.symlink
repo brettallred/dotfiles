@@ -29,7 +29,8 @@ export PATH=/usr/local/Cellar/openresty/1.11.2.5/nginx/sbin:$PATH
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="./node_modules/.bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export PATH="/Users/brett.allred/Code/flutter/bin:$PATH"
+export PATH="/Users/brettallred/Code/flutter/bin:$PATH"
+export AIRFLOW_HOME="/Users/brettallred/Code/airflow"
 
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
@@ -43,14 +44,17 @@ fi
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 export JRUBY_OPTS=""
-#export SPARK_HOME=/Users/brett/Code/opensource/spark
-export UNIXNUVIS=/Users/brett.allred/nuvi/Nuvis
 #if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 # added by travis gem
-[ -f /Users/brett.allred/.travis/travis.sh ] && source /Users/brett.allred/.travis/travis.sh
+[ -f /Users/brettallred/.travis/travis.sh ] && source /Users/brettallred/.travis/travis.sh
 
-export NVM_DIR="/Users/brett.allred/.nvm"
+export NVM_DIR="/Users/brettallred/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 ulimit -n 10000
+
+# airflow
+autoload bashcompinit
+bashcompinit
+eval "$(register-python-argcomplete airflow)"

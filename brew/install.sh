@@ -16,13 +16,15 @@ brew install rabbitmq
 
 echo "Installing Other Environments"
 brew install golang
+brew install java
 brew install nodejs
 brew install pyenv
 brew install tree
-brew install spaceship # Command Line  Header
+brew install spaceship # Command Line Header
 brew install doctl # Digital Ocean Control
 brew install kubectl # K8s Control
 brew install helm # K8s package manager
+brew install graphviz
 
 echo "Installing Common Applications"
 brew install youtube-dl
@@ -45,4 +47,5 @@ handbrake \
 zoom \
 slack \
 microsoft-teams \
-mimestream
+mimestream \
+docker
