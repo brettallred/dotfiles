@@ -32,11 +32,14 @@ git clone git@github.com:tpope/vim-rails.git ~/.vim/bundle/vim-bundler
 echo "Installing Vim Fugitive"
 git clone git@github.com:tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 
-echo "Installing AG"
-git clone git@github.com:rking/ag.vim.git ~/.vim/bundle/ag 
+echo "Installing Ack"
+git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
 
 echo "Installing Vim Go"
 git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
 
 echo "Installing Gruvbox theme"
 git clone https://github.com/morhetz/gruvbox.git ~/.vim/bundle/gruvbox
+
+echo "Installing Vundler"
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim

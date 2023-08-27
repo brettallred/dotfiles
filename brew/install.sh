@@ -10,13 +10,15 @@ brew install ruby
 brew install yarn
 brew install cmake
 brew install heroku/brew/heroku
-brew install ag
+brew install ack
 brew install rabbitmq
-
+brew install vips
+brew install ffmpeg
 
 echo "Installing Other Environments"
 brew install golang
 brew install java
+sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 brew install nodejs
 brew install pyenv
 brew install tree
@@ -25,6 +27,10 @@ brew install doctl # Digital Ocean Control
 brew install kubectl # K8s Control
 brew install helm # K8s package manager
 brew install graphviz
+brew install flutter
+
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
 
 echo "Installing Common Applications"
 brew install youtube-dl

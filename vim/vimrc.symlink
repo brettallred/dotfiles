@@ -1,5 +1,30 @@
+"""" Don't load autocmds twice
 autocmd!
-execute pathogen#infect()
+map <F5> :wall!<CR>:!sbcl --load foo.cl<CR><CR>
+
+"""" VUNDLE
+set nocompatible      
+filetype off           
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'ctrlpvim/ctrlp.vim'   " Finder - https://github.com/ctrlpvim/ctrlp.vim
+Plugin 'tpope/vim-fugitive'   " Git controls - https://github.com/tpope/vim-fugitive
+Plugin 'preservim/nerdtree'   " File explorer 
+Plugin 'ryanoasis/vim-devicons' " Nerd Tree Icons
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'dense-analysis/ale'
+Plugin 'morhetz/gruvbox'      " Theme 
+Plugin 'tpope/vim-commentary'  " Commenting things out
+Plugin 'jlcrochet/vim-ruby'   
+Plugin 'tpope/vim-rails'
+Plugin 'vim-scripts/Align'
+Plugin 'mileszs/ack.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()
+
 
 """" CTRLP
 let g:ctrlp_working_path_mode = 'ra'
@@ -7,18 +32,12 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 nnoremap <leader>. :CtrlPTag<cr>
 
 """" NERDTREE
-map <silent> <F2> :NERDTreeToggle<cr>
 map <silent> HH :NERDTreeToggle<cr>
+autocmd VimEnter * NERDTree " Start NERDTree and leave the cursor in it.
 
-"""" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 "use goimports for formatting
 let g:go_fmt_command = "goimports"
@@ -27,7 +46,6 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
 
 " Open go doc in vertical window, horizontal, or tab
 au Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
@@ -57,10 +75,8 @@ syntax on
 set background=dark
 let g:gruvbox_italic=1
 autocmd vimenter * ++nested colorscheme gruvbox
-"
+
 """" Vim Ruby
-set nocompatible      " We're running Vim, not Vi!
-filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
@@ -118,3 +134,4 @@ au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
+

@@ -1,60 +1,62 @@
+## Oh My ZSH
 ZSH=$HOME/.oh-my-zsh
-DOTFILES=$HOME/.dotfiles
 ZSH_THEME="miloshadzic"
-# all of our zsh files
-typeset -U config_files
-config_files=($DOTFILES/**/*.zsh)
-
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
-do
-  source $file
-done
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
+plugins=() # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins - Currently not using any so I removed them
+zstyle ':omz:update' mode auto
 
-# Customize to your needs...
+autoload bashcompinit
+
 export EDITOR=vim
-
-export GOPATH=$HOME/Code/gowork
-export PATH=$PATH:~/Library/Python/2.7/bin:$GOPATH/bin
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export PATH=/usr/local/Cellar/openresty/1.11.2.5/nginx/sbin:$PATH
-
-
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="./node_modules/.bin:$PATH"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export PATH="/Users/brettallred/Code/flutter/bin:$PATH"
-export AIRFLOW_HOME="/Users/brettallred/Code/airflow"
-
-eval "$(rbenv init -)"
-eval "$(pyenv init -)"
-
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi'
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-
-export JRUBY_OPTS=""
-#if which jenv > /dev/null; then eval "$(jenv init -)"; fi
-
-# added by travis gem
-[ -f /Users/brettallred/.travis/travis.sh ] && source /Users/brettallred/.travis/travis.sh
-
-export NVM_DIR="/Users/brettallred/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 ulimit -n 10000
 
-# airflow
-autoload bashcompinit
-bashcompinit
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
+
+# NODE
+export PATH="./node_modules/.bin:$PATH"
+
+# FLUTTER
+export PATH="/Users/brettallred/Code/flutter/bin:$PATH"
+
+# PUMA
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+## PYTHON
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+## RUBY
+eval "$(rbenv init -)"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+
+# Airflow
+export AIRFLOW_HOME="/Users/brettallred/Code/airflow"
 eval "$(register-python-argcomplete airflow)"
+
+## JAVA env variablesexport 
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+
+## for Zlib
+export LDFLAGS="-L/opt/homebrew/opt/zlib/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/zlib/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/zlib/lib/pkgconfig"
+
+# On Linux/MacOS
+export SPARK_HOME="/opt/homebrew/Cellar/apache-spark/3.4.0/libexec"
+export PYTHONPATH="/opt/homebrew/Cellar/apache-spark/3.4.0/libexec/python/":$PYTHONP$
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+# Aliases
+# alias resource="source ~/.zshrc"
+alias reload!="source ~/.zshrc"
+alias vz="vim ~/.zshrc"
+alias a='ls -lrthG'
+alias retag='ctags --exclude=.svn --exclude=.git --exclude=log --exclude=tmp * && ctags.sh'
+alias u='cd ..' #up a directory
+alias goclean='rm -R vendor && rm -R Godeps'
+alias ctags="`brew --prefix`/bin/ctags"
+
