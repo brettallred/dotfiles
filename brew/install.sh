@@ -29,6 +29,9 @@ brew install helm # K8s package manager
 brew install graphviz
 brew install flutter
 
+brew tap homebrew/cask-fonts
+brew install font-hack-nerd-font
+
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 

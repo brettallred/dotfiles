@@ -22,20 +22,14 @@ export PATH="/Users/brettallred/Code/flutter/bin:$PATH"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 ## PYTHON
+export PATH="/Users/brettallred/.pyenv/shims/python:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 ## RUBY
 eval "$(rbenv init -)"
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
-
-# Airflow
-export AIRFLOW_HOME="/Users/brettallred/Code/airflow"
-eval "$(register-python-argcomplete airflow)"
-
-## JAVA env variablesexport 
+## JAVA env variablesexport
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 ## for Zlib
@@ -50,6 +44,8 @@ export PYTHONPATH="/opt/homebrew/Cellar/apache-spark/3.4.0/libexec/python/":$PYT
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
+export ASPNETCORE_ENVIRONMENT="Development"
+
 # Aliases
 # alias resource="source ~/.zshrc"
 alias reload!="source ~/.zshrc"
@@ -59,4 +55,11 @@ alias retag='ctags --exclude=.svn --exclude=.git --exclude=log --exclude=tmp * &
 alias u='cd ..' #up a directory
 alias goclean='rm -R vendor && rm -R Godeps'
 alias ctags="`brew --prefix`/bin/ctags"
+alias wip="git add -A && git commit -am 'Automated Push .. WIP' && git push"
+alias dun="git add -A && git commit -am 'Automated Push .. Working Version' && git push"
+alias out="git checkout"
+alias commit="git commit -am"
+alias checkout="git checkout && git pull"
+alias bx="bundle exec"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

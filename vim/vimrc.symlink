@@ -1,45 +1,72 @@
+set encoding=UTF-8
 """" Don't load autocmds twice
 autocmd!
 map <F5> :wall!<CR>:!sbcl --load foo.cl<CR><CR>
 
 """" VUNDLE
-set nocompatible      
-filetype off           
+set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim'   " Finder - https://github.com/ctrlpvim/ctrlp.vim
+"Plugin 'ctrlpvim/ctrlp.vim'   " Finder - https://github.com/ctrlpvim/ctrlp.vim
 Plugin 'tpope/vim-fugitive'   " Git controls - https://github.com/tpope/vim-fugitive
-Plugin 'preservim/nerdtree'   " File explorer 
-Plugin 'ryanoasis/vim-devicons' " Nerd Tree Icons
+Plugin 'preservim/nerdtree'   " File explorer
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'ryanoasis/vim-devicons' " Nerd Tree Icons
 Plugin 'dense-analysis/ale'
-Plugin 'morhetz/gruvbox'      " Theme 
+Plugin 'morhetz/gruvbox'      " Theme
 Plugin 'tpope/vim-commentary'  " Commenting things out
-Plugin 'jlcrochet/vim-ruby'   
+Plugin 'jlcrochet/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-scripts/Align'
 Plugin 'mileszs/ack.vim'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 
-" All of your Plugins must be added before the following line
+"
+"""" All of your Plugins must be added before the following line
 call vundle#end()
 
 
-"""" CTRLP
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-nnoremap <leader>. :CtrlPTag<cr>
-
 """" NERDTREE
 map <silent> HH :NERDTreeToggle<cr>
-autocmd VimEnter * NERDTree " Start NERDTree and leave the cursor in it.
+set wildignore+=*.swp,*.bak,*.pyc,*.o,*.class,*.DS_Store,*.git,*.svn,*.hg,*.swx,.*.un~,*.swo,*.swn,.netrwhist,*.exe,*.dll,*.so,*.a,*.out,CMakeFiles/,node_modules/,vendor/,dist/,build/,__pycache__/,*.egg-info/,.egg-info/,*.egg,*.vscode/,*.idea/,*.project/,*.metadata,*.cache/,*.db,*.mp3,*.wav,*.ogg,*.docx,*.odt
 
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+let NERDTreeRespectWildIgnore=1
+let g:NERDTreeWinSize = 30 " Set the width of the NERDTree window.
+let g:NERDTreeShowHidden = 1 " Show hidden files and directories.
+let g:NERDTreeTabsExec = 1
+let NERDTreeIgnore = ['__pycache__$', '\.pyc$', '\.swp$', '^node_modules$', '.venv$', '.vscode$', '.mypy_cache$', '.github$', '.pytest_cache$', '.egg-info$']
+"
+" NERDTree auto-refresh when a file is saved or closed
+autocmd BufWritePost,FileWritePost,BufReadPost * if isdirectory(expand("%")) | NERDTreeCWD | endif
+" NERDTree auto update file if updated outside of vim
+autocmd BufWritePost * if !empty(glob(expand('%:p:h').'/NERD_tree*')) | NERDTreeFind | endif
+
+"""" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
-"use goimports for formatting
+if exists('g:loaded_webdevicons')
+    call webdevicons#refresh()
+endif
+
+"""" CTRLP
+let g:ctrlp_enabled = 1
+let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|build|\.git|\.hg|\.svn)$'
+nnoremap <C-b> :CtrlPBuffer<CR>
+if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+nnoremap <C-p> :GFiles<CR>
+nnoremap <Leader>b :Buffers<CR>
+
+""" use goimports for formatting
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -53,24 +80,11 @@ au Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>t :tab split <CR>:exe "GoDef"<CR>
 
 au BufRead,BufNewFile *.md setlocal textwidth=80
-
-au BufNewFile,BufRead *.py 
-set tabstop=4 
-set softtabstop=4 
-set shiftwidth=4 
-set textwidth=79 
-set expandtab 
-set autoindent 
-set fileformat=unix
-
-au BufNewFile,BufRead *.js, *.html, *.css
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+au BufRead,BufNewFile *.njk setfiletype html
 
 let g:syntastic_ruby_checkers = ['jruby', 'mri', 'rubocop' ]
 
-"""" Color Scheme 
+"""" Color Scheme
 syntax on
 set background=dark
 let g:gruvbox_italic=1
@@ -85,9 +99,41 @@ autocmd FileType ruby compiler ruby
 set statusline+=%{fugitive#statusline()}
 
 """" Vim AG
-let g:ag_working_path_mode="r"
+let g:ag_working_path_mode='r'
+let g:ackprg = 'ag --vimgrep' " Integrate with Ack
 
 """" Vim Ruby
+
+"""" Vim Ale
+"""" Bind F8 to fixing problems with ALE
+nmap <F8> <Plug>(ale_fix)
+
+let python_highlight_all=1
+let g:ale_fix_on_save = 1
+let g:ale_python_flake8_options = '--max-line-length=88'
+
+let g:ale_linters = {'python': ['flake8']}
+" let g:ale_python_pylint_options = '--rcfile '.expand('~/.vim/.pylintrc')
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'python': ['black'],
+\   'ruby': ['rubocop']
+\}
+
+
+"""" 'add_blank_lines_for_python_control_statements' - Add blank lines before control statements.
+"""" 'autoflake' - Fix flake issues with autoflake.
+"""" 'autoimport' - Fix import issues with autoimport.
+"""" 'autopep8' - Fix PEP8 issues with autopep8.
+"""" 'black' - Fix PEP8 issues with black.
+"""" 'isort' - Sort Python imports with isort.
+"""" 'pycln' - remove unused python import statements
+"""" 'pyflyby' - Tidy Python imports with pyflyby.
+"""" 'reorder-python-imports' - Sort Python imports with reorder-python-imports.
+"""" 'ruff' - A python linter/fixer for Python written in Rust
+"""" 'yapf' - Fix Python files with yapf.
+
 
 """" Basic Settings
 set nowrap
@@ -98,7 +144,7 @@ set norelativenumber
 set expandtab
 set hidden         " remember more commands and search history
 set history=1000
-set hlsearch 
+set hlsearch
 set ignorecase smartcase	" make searches case-sensitive only if they contain upper-case characters
 set incsearch
 set laststatus=2
@@ -108,30 +154,23 @@ set showmatch
 set softtabstop=2
 set switchbuf=useopen
 set tabstop=2
-set winwidth=79
+set winwidth=88
 set undolevels=1000
 set title
+set statusline+=%F
 set ts=2
 set backspace=2
 
-" format the entire file
-nnoremap <leader>fef :normal! gg=G``<CR>
-noremap <F3> :Autoformat<CR><CR>
-noremap <silent> <Tab> :wincmd w<cr>
-
-set colorcolumn=120
 let mapleader = ","
 nnoremap <leader>ev :vsplit ~/.dotfiles/vim/vimrc.symlink<cr>
 inoremap jk <esc>
 nnoremap <leader><leader> <c-^>
+nnoremap <F5> :source ~/.vimrc<CR>
 
 " change cursor in insert mode
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-
+let pyindent_nested_paren="&sw*2"
+let pyindent_open_paren="&sw*2"

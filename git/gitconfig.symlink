@@ -6,19 +6,20 @@
   keepBackup = false
 	tool = p4mergetool
 
-[mergetool "custom"]
-  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "$PWD/$BASE" "$PWD/$REMOTE" "$PWD/$LOCAL" "$PWD/$MERGED"
-  keepTemporaries = false
-  trustExitCode = false
-  keepBackup = false
+[alias]
+c = commit
 
 [core]
 	excludesfile = /Users/brett.allred/.gitignore
-  editor = /usr/local/bin/vim
+  editor = /opt/homebrew/bin/vim
 	autocrlf = input
+  # Don't consider trailing space change as a cause for merge conflicts
+  whitespace = -trailing-space
 
 [push]
-	default = simple
+  default = current
+  autoSetupRemote = true
+
 [heroku]
 
 [color]
@@ -26,12 +27,39 @@
   status = auto
   branch = auto
   diff = auto
+
+[color "branch"]
+  # Blue on black is hard to read in git branch -vv: use cyan instead
+  upstream = cyan
+
 [mergetool "p4mergetool"]
 	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
 	trustExitCode = false
+  keepTemporaries = false
+  trustExitCode = false
+  keepBackup = false
+
+[mergetool "custom"]
+  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "$PWD/$BASE" "$PWD/$REMOTE" "$PWD/$LOCAL" "$PWD/$MERGED"
+	trustExitCode = false
+  keepTemporaries = false
+  trustExitCode = false
+  keepBackup = false
+
 [mergetool]
 	keepBackup = false
+
 [diff]
 	tool = p4mergetool
+
 [difftool "p4mergetool"]
 	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
+
+[fetch]
+    prune = true
+
+[status]
+  # Display submodule rev change summaries in status
+  submoduleSummary = true
+  # Recursively traverse untracked directories to display all contents
+  showUntrackedFiles = all
