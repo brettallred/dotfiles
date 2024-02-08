@@ -1,6 +1,5 @@
 #!/bin/bash
 sh brew/install.sh
-sh vim/install.sh
 sh core/install.sh
 
 # Install Powerline Fonts
