@@ -42,8 +42,7 @@ brew install hugo
 
 echo "Installing Fonts"
 brew tap homebrew/cask-fonts
-brew install font-hack-nerd-font
-brew install --cask homebrew/cask-fonts/font-material-icons
+brew install font-material-icons font-dejavu-sans-mono-nerd-font font-hack-nerd-font
 
 echo "Installing Common Applications"
 brew install youtube-dl
