@@ -37,6 +37,9 @@ export LDFLAGS="-L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/openssl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/openssl/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
 
+## Google Clouds SDK
+export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
+
 
 # On Linux/MacOS
 export SPARK_HOME="/opt/homebrew/Cellar/apache-spark/3.4.0/libexec"
@@ -46,6 +49,7 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 export ASPNETCORE_ENVIRONMENT="Development"
+
 
 # Aliases
 # alias resource="source ~/.zshrc"
@@ -64,3 +68,11 @@ alias checkout="git checkout && git pull"
 alias bx="bundle exec"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+function makegif() {
+    if [ -z "$1" ]; then
+        echo "Usage: makegif <input-video-file>"
+        return 1
+    fi
+    ffmpeg -i "$1" -r 10 -vf "scale=800:-1" ~/Desktop/output.gif && echo "✨ GIF saved to Desktop/output.gif"
+}

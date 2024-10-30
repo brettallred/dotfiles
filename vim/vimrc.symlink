@@ -5,7 +5,7 @@ map <F5> :wall!<CR>:!sbcl --load foo.cl<CR><CR>
 
 """" VUNDLE
 set nocompatible
-filetype off
+filetype on
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -18,7 +18,7 @@ Plugin 'ryanoasis/vim-devicons' " Nerd Tree Icons
 Plugin 'dense-analysis/ale'
 Plugin 'morhetz/gruvbox'      " Theme
 Plugin 'tpope/vim-commentary'  " Commenting things out
-Plugin 'jlcrochet/vim-ruby'
+" Plugin 'jlcrochet/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-scripts/Align'
 Plugin 'mileszs/ack.vim'
@@ -38,7 +38,7 @@ let NERDTreeRespectWildIgnore=1
 let g:NERDTreeWinSize = 30 " Set the width of the NERDTree window.
 let g:NERDTreeShowHidden = 1 " Show hidden files and directories.
 let g:NERDTreeTabsExec = 1
-let NERDTreeIgnore = ['__pycache__$', '\.pyc$', '\.swp$', '^node_modules$', '.venv$', '.vscode$', '.mypy_cache$', '.github$', '.pytest_cache$', '.egg-info$']
+let NERDTreeIgnore = ['__pycache__$', '\.pyc$', '\.swp$', '^node_modules$', '.venv$', '.vscode$', '.mypy_cache$', '.pytest_cache$', '.egg-info$', 'target$']
 "
 " NERDTree auto-refresh when a file is saved or closed
 autocmd BufWritePost,FileWritePost,BufReadPost * if isdirectory(expand("%")) | NERDTreeCWD | endif
@@ -52,6 +52,7 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 if exists('g:loaded_webdevicons')
     call webdevicons#refresh()
 endif
+
 
 """" CTRLP
 let g:ctrlp_enabled = 1
@@ -81,6 +82,8 @@ au Filetype go nnoremap <leader>t :tab split <CR>:exe "GoDef"<CR>
 
 au BufRead,BufNewFile *.md setlocal textwidth=80
 au BufRead,BufNewFile *.njk setfiletype html
+autocmd BufNewFile,BufRead *.erb let b:eruby_subtype = 'html'
+autocmd BufNewFile,BufRead *.erb set filetype=eruby
 
 let g:syntastic_ruby_checkers = ['jruby', 'mri', 'rubocop' ]
 
@@ -118,7 +121,8 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
 \   'python': ['black'],
-\   'ruby': ['rubocop']
+\   'ruby': ['rubocop'],
+\   'sql': ['sqlfmt']
 \}
 
 
@@ -174,3 +178,7 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 let pyindent_nested_paren="&sw*2"
 let pyindent_open_paren="&sw*2"
+
+" show tab characters
+set list
+set listchars=tab:>-

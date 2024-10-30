@@ -38,7 +38,7 @@ brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 brew install unixodbc
 brew install cloud-sql-proxy google-cloud-sdk
-brew install hugo
+brew install ffmpeg
 
 echo "Installing Fonts"
 brew tap homebrew/cask-fonts
