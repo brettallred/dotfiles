@@ -56,7 +56,7 @@ c = commit
 	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
 
 [fetch]
-    prune = true
+	prune = true
 
 [status]
   # Display submodule rev change summaries in status
