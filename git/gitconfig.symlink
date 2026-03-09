@@ -3,7 +3,7 @@
   email = brettallred@gmail.com
 
 [core]
-  excludesfile = /Users/brett.allred/.gitignore
+  excludesfile = ~/.gitignore
   editor = /opt/homebrew/bin/vim
   autocrlf = input
   whitespace = -trailing-space

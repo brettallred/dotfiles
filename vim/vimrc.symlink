@@ -7,7 +7,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-" Plugin 'ctrlpvim/ctrlp.vim'   " Finder - https://github.com/ctrlpvim/ctrlp.vim
 Plugin 'tpope/vim-fugitive'   " Git controls - https://github.com/tpope/vim-fugitive
 Plugin 'preservim/nerdtree'   " File explorer
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -15,7 +14,6 @@ Plugin 'ryanoasis/vim-devicons' " Nerd Tree Icons
 Plugin 'dense-analysis/ale'
 Plugin 'morhetz/gruvbox'      " Theme
 Plugin 'tpope/vim-commentary'  " Commenting things out
-" Plugin 'jlcrochet/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-scripts/Align'
 Plugin 'mileszs/ack.vim'
@@ -52,25 +50,10 @@ endif
 nnoremap <C-p> :GFiles<CR>
 nnoremap <Leader>b :Buffers<CR>
 
-""" use goimports for formatting
-let g:go_fmt_command = "goimports"
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-
-" Open go doc in vertical window, horizontal, or tab
-au Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
-au Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef"<CR>
-au Filetype go nnoremap <leader>t :tab split <CR>:exe "GoDef"<CR>
-
 au BufRead,BufNewFile *.md setlocal textwidth=80
 au BufRead,BufNewFile *.njk setfiletype html
 autocmd BufNewFile,BufRead *.erb let b:eruby_subtype = 'html'
 autocmd BufNewFile,BufRead *.erb set filetype=eruby
-
-let g:syntastic_ruby_checkers = ['jruby', 'mri', 'rubocop' ]
 
 """" Color Scheme
 syntax on
@@ -102,8 +85,6 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \   'html': ['htmlhint']
 \}
-
-" let g:ale_python_pylint_options = '--rcfile '.expand('~/.vim/.pylintrc')
 
 let g:ale_fixers = {
 \   'html': ['prettier'],

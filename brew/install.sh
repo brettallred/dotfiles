@@ -26,9 +26,6 @@ brew install nodejs
 brew install tree
 brew install spaceship # Command Line Header
 brew install doctl # Digital Ocean Control
-brew install kubectl # K8s Control
-brew install helm # K8s package manager
-brew install graphviz
 brew install cloud-sql-proxy google-cloud-sdk
 brew install ffmpeg
 
@@ -40,32 +37,23 @@ echo "Installing Common Applications"
 brew install --cask  \
 notion \
 1password \
-evernote \
 google-drive \
-visual-studio-code \
 figma \
 vlc \
 sublime-text \
 iterm2 \
-p4v \
 microsoft-office \
 google-chrome \
 figma \
 zoom \
 slack \
-microsoft-teams \
 mimestream \
-docker \
 notion-calendar \
-grammarly \
-skype \
-rippling \
-drata-agent
 
 echo "Setup Ruby & Python"
-rbenv install 3.2.6
-rbenv global 3.2.6
+rbenv install 3.3.9
+rbenv global 3.3.9
 
 
-npm install -g eslint prettier @prettier/plugin-ruby prettier-plugin-erb
+npm install -g eslint prettier @prettier/plugin-ruby prettier-plugin-erb wrangler
 gem install erb_lint

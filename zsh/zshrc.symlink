@@ -14,11 +14,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 # NODE
 export PATH="./node_modules/.bin:$PATH"
 
-# FLUTTER
-export PATH="/Users/brettallred/Code/flutter/bin:$PATH"
-
 ## PYTHON
-export PATH="/Users/brettallred/.pyenv/shims/python:$PATH"
 eval "$(pyenv init --path)"
 
 ## RUBY
@@ -28,24 +24,11 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)"
 ## Google Clouds SDK
 export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
 
-export ASPNETCORE_ENVIRONMENT="Development"
-
 # Aliases
-# alias resource="source ~/.zshrc"
 alias reload!="source ~/.zshrc"
 alias vz="vim ~/.zshrc"
 alias a='ls -lrthG'
-alias retag='ctags --exclude=.svn --exclude=.git --exclude=log --exclude=tmp * && ctags.sh'
 alias u='cd ..' #up a directory
-alias goclean='rm -R vendor && rm -R Godeps'
-alias ctags="`brew --prefix`/bin/ctags"
-alias wip="git add -A && git commit -am 'Automated Push .. WIP' && git push"
-alias dun="git add -A && git commit -am 'Automated Push .. Working Version' && git push"
-alias out="git checkout"
-alias commit="git commit -am"
-alias checkout="git checkout && git pull"
-alias bx="bundle exec"
-alias cleanbranches='git fetch -p && for branch in $(git branch -vv | grep ": gone]" | awk "{print \$1}"); do git branch -D "$branch"; done'
 alias cc='claude --plugin-dir .claude/plugins/brand-image --dangerously-skip-permissions'
 
 
