@@ -24,31 +24,17 @@
 [color "branch"]
   upstream = cyan
 
-[merge]
-  tool = p4mergetool
-  keepBackup = false
-
-[mergetool "p4mergetool"]
-  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
-  trustExitCode = false
-  keepBackup = false
-  keepTemporaries = false
-
-[diff]
-  tool = p4mergetool
-
-[difftool "p4mergetool"]
-  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
-
 [fetch]
   prune = true
 
 [status]
   submoduleSummary = true
   showUntrackedFiles = all
+
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
+
 [credential "https://gist.github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential

@@ -1,12 +1,20 @@
 # dotfiles
 
-Configuring a new computer
+Configuring a new Mac.
 
-1. Install xcode, better snap tool, filezilla pro from the App Store
-2. Install Homebrew `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+## Setup
+
+1. Install Xcode command line tools: `xcode-select --install`
+2. Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 3. `brew install git`
-4. Copy .ssh/id_rsa.pub and id_rsa to .ssh/
-5. `chmod 400 .ssh/id_rsa`
-6. Clone this repo `git clone git@github.com:brettallred/dotfiles.git .dotfiles`
-7. `./install.sh`
-8. `./setup-aliases.sh
+4. Generate SSH key: `ssh-keygen -t ed25519` and add to GitHub
+5. Clone this repo: `git clone git@github.com:brettallred/dotfiles.git ~/.dotfiles`
+6. Run setup: `cd ~/.dotfiles && ./setup.sh`
+
+## Structure
+
+- `brew/install.sh` - Homebrew packages and cask apps
+- `git/` - gitconfig and gitignore (symlinked to `~/.gitconfig`, `~/.gitignore`)
+- `vim/` - vimrc (symlinked to `~/.vimrc`)
+- `zsh/` - zshrc (symlinked to `~/.zshrc`)
+- `setup.sh` - Single entry point that runs everything

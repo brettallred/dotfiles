@@ -1,8 +1,7 @@
 # SSH private keys - NEVER commit these
 .ssh/id_rsa
-.ssh/mx_id_rsa
-.ssh/ensorings
-.ssh/presspass
-.ssh/snappower
 .ssh/*.pem
 .ssh/known_hosts
+
+# Vim swap files
+*.swp
