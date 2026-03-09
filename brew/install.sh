@@ -65,3 +65,7 @@ drata-agent
 echo "Setup Ruby & Python"
 rbenv install 3.2.6
 rbenv global 3.2.6
+
+
+npm install -g eslint prettier @prettier/plugin-ruby prettier-plugin-erb
+gem install erb_lint

@@ -1,65 +1,54 @@
 [user]
-	name = Brett Allred
+  name = Brett Allred
   email = brettallred@gmail.com
 
-[merge]
-  keepBackup = false
-	tool = p4mergetool
+[core]
+  excludesfile = /Users/brett.allred/.gitignore
+  editor = /opt/homebrew/bin/vim
+  autocrlf = input
+  whitespace = -trailing-space
 
 [alias]
-c = commit
-
-[core]
-	excludesfile = /Users/brett.allred/.gitignore
-  editor = /opt/homebrew/bin/vim
-	autocrlf = input
-  # Don't consider trailing space change as a cause for merge conflicts
-  whitespace = -trailing-space
+  c = commit
 
 [push]
   default = current
   autoSetupRemote = true
 
-[heroku]
-
 [color]
-	ui = true
+  ui = true
   status = auto
   branch = auto
   diff = auto
 
 [color "branch"]
-  # Blue on black is hard to read in git branch -vv: use cyan instead
   upstream = cyan
 
+[merge]
+  tool = p4mergetool
+  keepBackup = false
+
 [mergetool "p4mergetool"]
-	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
-	trustExitCode = false
-  keepTemporaries = false
+  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
   trustExitCode = false
   keepBackup = false
-
-[mergetool "custom"]
-  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "$PWD/$BASE" "$PWD/$REMOTE" "$PWD/$LOCAL" "$PWD/$MERGED"
-	trustExitCode = false
   keepTemporaries = false
-  trustExitCode = false
-  keepBackup = false
-
-[mergetool]
-	keepBackup = false
 
 [diff]
-	tool = p4mergetool
+  tool = p4mergetool
 
 [difftool "p4mergetool"]
-	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
+  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
 
 [fetch]
-	prune = true
+  prune = true
 
 [status]
-  # Display submodule rev change summaries in status
   submoduleSummary = true
-  # Recursively traverse untracked directories to display all contents
   showUntrackedFiles = all
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
